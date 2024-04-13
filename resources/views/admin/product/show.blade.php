@@ -32,7 +32,7 @@
                             <ul class="text-nowrap overflow-auto" id="images">
 
                                 <li class="d-inline-block mr-1" style="position: relative;">
-                                    <img style="height: 150px;" src="../../front/HinhAnh/ChiTietSach/z5098369685595_674f78e53ab524b97c51069076b7bfc9.jpg" alt="Image">
+                                    <img style="height: 150px;" src="../../front/TGDD_Picture/product-1.webp" alt="Image">
 
                                 </li>
 
@@ -43,68 +43,63 @@
                     <div class="position-relative row form-group">
                         <label for="brand_id" class="col-md-3 text-md-right col-form-label">Product Images</label>
                         <div class="col-md-9 col-xl-8">
-                            <p><a href="./product-image.html">Manage images</a></p>
+                            <p><a href="#">Manage images</a></p>
                         </div>
                     </div>
 
                     <div class="position-relative row form-group">
                         <label for="brand_id" class="col-md-3 text-md-right col-form-label">Product Details</label>
                         <div class="col-md-9 col-xl-8">
-                            <p><a href="./product-detail.html">Manage details</a></p>
+                            <p><a href="#">Manage details</a></p>
                         </div>
                     </div>
 
                     <div class="position-relative row form-group">
-                        <label for="brand_id" class="col-md-3 text-md-right col-form-label">Nhà xuất bán</label>
+                        <label for="brand_id" class="col-md-3 text-md-right col-form-label">Nhà cung cấp</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>{{$sach->NhaXuatBan->TenNhaXuatBan}}</p>
+                            <p>{{$sanpham->NhaCungCap->TenNhaCungCap}}</p>
                         </div>
                     </div>
 
                     <div class="position-relative row form-group">
-                        <label for="product_category_id" class="col-md-3 text-md-right col-form-label">Thể loại</label>
+                        <label for="name" class="col-md-3 text-md-right col-form-label">Tên sản phẩm</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>{{$sach->TheLoaiSach->TheLoaiSach}}</p>
+                            <p>{{$sanpham->TenSP}}</p>
                         </div>
                     </div>
 
                     <div class="position-relative row form-group">
-                        <label for="name" class="col-md-3 text-md-right col-form-label">Tên sách</label>
+                        <label for="price" class="col-md-3 text-md-right col-form-label">Giá tiền</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>{{$sach->TenSach}}</p>
+                            <p>{{$sanpham->giatien}}</p>
                         </div>
                     </div>
-
-
-
-                    <div class="position-relative row form-group">
-                        <label for="price" class="col-md-3 text-md-right col-form-label">Giá sách</label>
-                        <div class="col-md-9 col-xl-8">
-                            <p>{{$sach->GiaSach}}</p>
-                        </div>
-                    </div>
-
-
 
                     <div class="position-relative row form-group">
                         <label for="qty" class="col-md-3 text-md-right col-form-label">Số lượng</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>{{$sach->SoLuong}}</p>
+                            <p>{{$sanpham->SoLuong}}</p>
                         </div>
                     </div>
 
+                    <div class="position-relative row form-group">
+                        <label for="product_category_id" class="col-md-3 text-md-right col-form-label">Ghi chú</label>
+                        <div class="col-md-9 col-xl-8">
+                            <p>{{$sanpham->GhiChu}}</p>
+                        </div>
+                    </div>
 
                     <div class="position-relative row form-group">
                         <label for="featured" class="col-md-3 text-md-right col-form-label">Nổi bật</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>Yes</p>
+                            <p>TOP</p>
                         </div>
                     </div>
 
                     <div class="position-relative row form-group">
                         <label for="description" class="col-md-3 text-md-right col-form-label">Mô tả</label>
                         <div class="col-md-9 col-xl-8">
-                            <p>Frieren</p>
+                            <p>Điện thoại di động thông minh</p>
                         </div>
                     </div>
                 </div>

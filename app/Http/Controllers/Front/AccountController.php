@@ -16,10 +16,10 @@ class AccountController extends Controller
 {
     private $userService;
     private $theloaisanphamService;
-    public function __construct(UserServiceInterface $userService, TheLoaiSanPhamServiceInterface $theloaisanphamService)
+    public function __construct(UserServiceInterface $userService, TheLoaiSanPhamServiceInterface $theloaisachService)
     {
         $this->userService = $userService;
-        $this->theloaisanphamService = $theloaisanphamService;
+        $this->theloaisanphamService = $theloaisachService;
     }
     public function login()
     {
@@ -39,8 +39,7 @@ class AccountController extends Controller
         if (Auth::attempt($credentials)) {
             return 'success';
         } else {
-            return back()
-                ->with('notification', 'ERROR: Email or password is wrong');
+            return 'fail';
         }
     }
 
@@ -52,19 +51,21 @@ class AccountController extends Controller
 
 
     public function postRegister(Request $request)
-    {
-        if ($request->password != $request->password_confirmation) {
-            return back()
-                ->with('notification', 'ERROR: Confirm password does not match');
-        }
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password), // Hash mật khẩu trước khi lưu vào cơ sở dữ liệu
-            'level' => 2,
-        ];
-        $this->userService->create($data);
-        return redirect('account/login')
-            ->with('notification', 'Register Successfully! Please Login to continue');
+{
+    if ($request->password != $request->password_confirmation) {
+        return back()->with('notification', 'LỖI: Mật khẩu xác nhận không khớp');
     }
+
+    $user = new User(); // Tạo một thể hiện mới của User
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->level = 2; // Thiết lập cấp độ của người dùng là 2
+
+    // Lưu người dùng vào cơ sở dữ liệu
+    $user->save();
+
+    return redirect('account/login')->with('notification', 'Đăng ký thành công! Vui lòng đăng nhập để tiếp tục');
+}
+
 }

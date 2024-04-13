@@ -389,6 +389,19 @@ body{
     margin-left: 500px;
     padding-top: 20px;
 }
+#timkiem{
+    width: 800px;
+    height: 100px;
+}
+#timkiem1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+#timkiem1 button{
+    width: 70px;
+    height: 40px;
+}
 /* --------------------Thanh toán---------------------------- */
 #mains {
     width: 900px;

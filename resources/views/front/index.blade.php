@@ -85,22 +85,26 @@
                 <span id="address" style="padding-left: 100px; text-transform:uppercase"><b>Công ty cổ phần kinh doanh
                         bqh_mobileshop</b></span>
                 <div id="sign-in" style="float: right">
-                    <a href="LogIn.html">Đăng nhập</a>
+                    <a href="account/login/">Đăng nhập</a>
                     <span> / </span>
-                    <a href="Register.html">Đăng ký</a>
+                    <a href="account/register/">Đăng ký</a>
                 </div>
             </div>
 
             <div id="banner">
                 <a href="/"><img id="logo" src="front/TGDD_Picture/logo.jpg" /></a>
-                <input type="text" placeholder="Tìm kiếm..." />
-                <button type="submit">Search</button>
+                <form id="timkiem" action="{{ url('shop/timkiemsanpham') }}" method="GET">
+                    <div id="timkiem1">
+                        <input name="search" type="text" placeholder="Tìm kiếm..." />
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
                 <a id="cartAmount" href="/cart">Giỏ Hàng ({{ Cart::count() }})</a>
             </div>
 
             <div id="menu">
                 <ul>
-                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="/">Trang chủ</a></li>
                     <li><a href="#">Giới thiệu</a>
                         <ul class="sub-menu">
                             <li><a href="#">Hệ thống cửa hàng</a></li>

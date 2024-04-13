@@ -58,9 +58,9 @@
                     <table class="align-middle mb-0 table table-borderless table-striped table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">Mã sách</th>
-                                <th>Ảnh sách/Tên sách</th>
-                                <th class="text-center">Giá sách</th>
+                                <th class="text-center">Mã sản phẩm</th>
+                                <th>Tên sản phẩm/Nhà cung cấp</th>
+                                <th class="text-center">Giá sản phẩm ($)</th>
                                 <th class="text-center">Số lượng</th>
                                 <th class="text-center">Featured</th>
                                 <th class="text-center">Actions</th>
@@ -68,9 +68,9 @@
                         </thead>
 
                         <tbody>
-                            @foreach($sachs as $sach)
+                            @foreach($sanphams as $sanpham)
                             <tr>
-                                <td class="text-center text-muted">#{{$sach->MaSach}}</td>
+                                <td class="text-center text-muted">#{{$sanpham->MaSP}}</td>
                                 <td>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
@@ -80,31 +80,31 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
-                                                <div class="widget-heading">{{$sach->TenSach}}</div>
+                                                <div class="widget-heading">{{$sanpham->TenSP}}</div>
                                                 <div class="widget-subheading opacity-7">
-                                                    {{$sach->NhaXuatBan->TenNhaXuatBan}}
+                                                    {{$sanpham->NhaCungCap->TenNhaCungCap}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">{{$sach->GiaSach}}</td>
-                                <td class="text-center">{{$sach->SoLuong}}</td>
+                                <td class="text-center">{{$sanpham->giatien}}</td>
+                                <td class="text-center">{{$sanpham->SoLuong}}</td>
                                 <td class="text-center">
                                     <div class="badge badge-success mt-2">
                                         True
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/admin/product/{{$sach->MaSach}}" class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                    <a href="/admin/product/{{$sanpham->MaSP}}" class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
                                         Details
                                     </a>
-                                    <a href="./admin/edit/{{$sach->MaSach}}" data-toggle="tooltip" title="Edit" data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
+                                    <a href="./admin/edit/{{$sanpham->MaSP}}" data-toggle="tooltip" title="Edit" data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
                                         <span class="btn-icon-wrapper opacity-8">
                                             <i class="fa fa-edit fa-w-20"></i>
                                         </span>
                                     </a>
-                                    <form class="d-inline" action="./admin/product/{{$sach->MaSach}}" method="post">
+                                    <form class="d-inline" action="./admin/product/{{$sanpham->MaSP}}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm" type="submit" data-toggle="tooltip" title="Delete" data-placement="bottom" onclick="return confirm('Do you really want to delete this item?')">
@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="d-block card-footer">
-                    {{$sachs->links()}}
+                    {{$sanphams->links()}}
                 </div>
 
             </div>

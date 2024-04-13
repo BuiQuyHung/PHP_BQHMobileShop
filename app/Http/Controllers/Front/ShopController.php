@@ -40,7 +40,10 @@ class ShopController extends Controller
         $searchTerm = $request->input('search');
         $menu = $this->theloaisanphamService->Menu();
         // Tìm sách có tên chứa từ khóa tìm kiếm
-        $sanpham = SanPham::where('TenSP', 'like', "%$searchTerm%")->get();
+        $sanpham = SanPham::where('TenSP', 'like', "%$searchTerm%")
+            //    ->take(8)
+            ->get();
+
 
         return view('front.shop.TimKiemSanPham', compact('sanpham', 'menu', 'searchTerm'));
     }

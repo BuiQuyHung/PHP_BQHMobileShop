@@ -29,29 +29,27 @@
 
                         @csrf
                         <div class="position-relative row form-group">
-                            <label for="name" class="col-md-3 text-md-right col-form-label">Tên sách</label>
+                            <label for="name" class="col-md-3 text-md-right col-form-label">Tên Sản Phẩm</label>
                             <div class="col-md-9 col-xl-8">
-                                <input required name="TenSach" id="name" placeholder="Tên sách" type="text" class="form-control" value="">
+                                <input required name="TenSan" id="name" placeholder="Tên sách" type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="position-relative row form-group">
                             <label for="product_category_id" class="col-md-3 text-md-right col-form-label">Thể loại sách</label>
                             <div class="col-md-9 col-xl-8">
                                 <select required name="MaTheLoaiSach" id="product_category_id" class="form-control">
-                                    <option value="">Thể loại sách</option>
-                                    @foreach ($theloaisach as $tls)
-                                    <option value={{$tls->MaTheLoaiSach}}>
-                                        {{$tls->TheLoaiSach}}
+                                    <option value="">Thể loại sản phẩm</option>
+                                    @foreach ($theloaisanpham as $tlsp)
+                                    <option value={{$tlsp->MaDanhMuc}}>
+                                        {{$tlsp->TenDanhMuc}}
                                     </option>
-
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
 
-
-                        <div class="position-relative row form-group">
+                        {{-- <div class="position-relative row form-group">
                             <label for="brand_id" class="col-md-3 text-md-right col-form-label">Tác giả</label>
                             <div class="col-md-9 col-xl-8">
                                 <select required name="MaTacGia" id="brand_id" class="form-control">
@@ -64,10 +62,10 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
 
-                        <div class="position-relative row form-group">
+                        {{-- <div class="position-relative row form-group">
                             <label for="brand_id" class="col-md-3 text-md-right col-form-label">Nhà xuất bản</label>
                             <div class="col-md-9 col-xl-8">
                                 <select required name="MaNhaXuatBan" id="brand_id" class="form-control">
@@ -80,7 +78,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="position-relative row form-group">
                             <label for="qty" class="col-md-3 text-md-right col-form-label">Số lượng</label>

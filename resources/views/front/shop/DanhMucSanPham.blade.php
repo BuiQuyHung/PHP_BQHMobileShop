@@ -91,10 +91,14 @@
             </div>
 
             <div id="banner">
-                <a href="/"><img id="logo" src="../../front/TGDD_Picture/logo.jpg" /></a>
-                <input type="text" placeholder="Tìm kiếm..." />
-                <button type="submit">Search</button>
-                <a id="cartAmount" href="Cart.html">Giỏ hàng (0)</a>
+                <a href="/"><img id="logo" src="front/TGDD_Picture/logo.jpg" /></a>
+                <form id="timkiem" action="{{ url('shop/timkiemsanpham') }}" method="GET">
+                    <div id="timkiem1">
+                        <input name="search" type="text" placeholder="Tìm kiếm..." />
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+                <a id="cartAmount" href="/cart">Giỏ Hàng ({{ Cart::count() }})</a>
             </div>
 
             <div id="menu">
@@ -162,11 +166,11 @@
                         <a href="product_details.html"><img class="item-photo" src="../../front/TGDD_Picture/product-1.webp"
                                 alt="SP" /></a>
                         <a class=" product-name" href="{{ url('shop/sanpham/' . $sanpham->MaSP) }}">{{$sanpham->TenSP}}</a>
-                        <span class="new-price">{{$dienthoai->giatien}}$</span>
+                        <span class="new-price">{{$sanpham->giatien}}$</span>
                         <span class="old-price"> <?php
                             // Assuming $dienthoai->giatien holds the new-price value
                             
-                            $newPrice = $dienthoai->giatien;
+                            $newPrice = $sanpham->giatien;
                            
                             $oldPrice = $newPrice * 1.2;
                             echo "<span class=\"old-price\">$oldPrice$</span>";

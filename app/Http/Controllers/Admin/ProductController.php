@@ -4,28 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Service\Sach\SachServiceInterface;
+use App\Service\SanPham\SanPhamServiceInterface;
 
-use App\Service\TheLoaiSach\TheLoaiSachServiceInterface;
-use App\Service\NhaXuatBan\NhaXuatBanServiceInterface;
+use App\Service\TheLoaiSanPham\TheLoaiSanPhamServiceInterface;
 use App\Service\NhaCungCap\NhaCungCapServiceInterface;
-use App\Service\TacGia\TacGiaServiceInterface;
 
 class ProductController extends Controller
 {
-    private $sachService;
-    private $theloaisachService;
-    private $nhaxuatbanService;
-    private $tacgiaService;
+    private $sanphamService;
+    private $theloaisanphamService;
     private $nhacungcapService;
 
 
-    public function __construct(SachServiceInterface $sachService, TheLoaiSachServiceInterface $theloaisachService, NhaXuatBanServiceInterface $nhaxuatbanService, TacGiaServiceInterface $tacgiaService, NhaCungCapServiceInterface $nhacungcapService)
+    public function __construct(SanPhamServiceInterface $sanphamService, TheLoaiSanPhamServiceInterface $theloaisanphamService, NhaCungCapServiceInterface $nhacungcapService)
     {
-        $this->sachService = $sachService;
-        $this->theloaisachService = $theloaisachService;
-        $this->nhaxuatbanService = $nhaxuatbanService;
-        $this->tacgiaService = $tacgiaService;
+        $this->sanphamService = $sanphamService;
+        $this->theloaisanphamService = $theloaisanphamService;
         $this->nhacungcapService = $nhacungcapService;
     }
     /**
@@ -35,8 +29,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $sachs = $this->sachService->searchAndPaginate('TenSach', $request->get('search'));
-        return view('admin.product.index', compact('sachs'));
+        $sanphams = $this->sanphamService->searchAndPaginate('TenSP', $request->get('search'));
+        return view('admin.product.index', compact('sanphams'));
     }
 
     /**
@@ -46,12 +40,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $theloaisach = $this->theloaisachService->all();
-        $nhaxuatban = $this->nhaxuatbanService->all();
-        $tacgia = $this->tacgiaService->all();
+        $theloaisanpham = $this->theloaisanphamService->all();
         $nhacungcap = $this->nhacungcapService->all();
 
-        return view('admin.product.create', compact('theloaisach', 'nhaxuatban', 'tacgia', 'nhacungcap'));
+        return view('admin.product.create', compact('theloaisanpham', 'nhacungcap'));
     }
 
     /**
@@ -63,8 +55,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $sach = $this->sachService->create($data);
-        return redirect('admin/product/' . $sach->id);
+        $sanpham = $this->sanphamService->create($data);
+        return redirect('admin/product/' . $sanpham->id);
     }
 
     /**
@@ -73,10 +65,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($MaSach)
+    public function show($MaSP)
     {
-        $sach = $this->sachService->find($MaSach);
-        return view('admin.product.show', compact('sach'));
+        $sanpham = $this->sanphamService->find($MaSP);
+        return view('admin.product.show', compact('sanpham'));
     }
 
     /**
@@ -85,15 +77,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($MaSach)
+    public function edit($MaSP)
     {
-        $sach = $this->sachService->find($MaSach);
-        $theloaisach = $this->theloaisachService->all();
-        $nhaxuatban = $this->nhaxuatbanService->all();
-        $tacgia = $this->tacgiaService->all();
+        $sanpham = $this->sanphamService->find($MaSP);
+        $theloaisanpham = $this->theloaisanphamService->all();
         $nhacungcap = $this->nhacungcapService->all();
 
-        return view('admin.product.edit', compact('theloaisach', 'nhaxuatban', 'tacgia', 'nhacungcap', 'sach'));
+        return view('admin.product.edit', compact('theloaisanpham', 'nhacungcap', 'sanpham'));
     }
 
     /**
@@ -103,11 +93,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $MaSach)
+    public function update(Request $request, $MaSP)
     {
         $data = $request->all();
-        $this->sachService->update($data, $MaSach);
-        return redirect('admin/product/' . $MaSach);
+        $this->sanphamService->update($data, $MaSP);
+        return redirect('admin/product/' . $MaSP);
     }
 
     /**
@@ -116,9 +106,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($MaSach)
+    public function destroy($MaSP)
     {
-        $this->sachService->delete($MaSach);
+        $this->sanphamService->delete($MaSP);
         return redirect('admin/product/');
     }
 }

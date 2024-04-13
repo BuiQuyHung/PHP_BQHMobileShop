@@ -21,7 +21,7 @@ Route::get('/', [\App\Http\Controllers\Front\HomeController::class, 'index']);
 Route::get('shop/sanpham/{id}', [App\Http\Controllers\Front\ShopController::class, 'ChiTietSanPham']);
 Route::get('shop/danhmucsanpham/{id}', [App\Http\Controllers\Front\ShopController::class, 'DanhMucSanPham']);
 Route::get('shop/timkiemsanpham', [App\Http\Controllers\Front\ShopController::class, 'TimKiemSanPham']);
-Route::get('shop/timkiemsanpham', [App\Http\Controllers\Front\ShopController::class, 'TimKiemSanPham']);
+
 Route::prefix('cart')->group(function () {
     Route::get('add/{id}', [\App\Http\Controllers\Front\CartController::class, 'add']);
     Route::get('delete', [\App\Http\Controllers\Front\CartController::class, 'delete']);

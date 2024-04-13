@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website TiniStore</title>
-    <link rel="stylesheet" type="text/css" href="Index.css" />
-    <script tyle="text/javascript" src="myScript.js"></script>
-    <script tyle="text/javascript" src="jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../front/CSS/Index.css" />
+    <script tyle="text/javascript" src="../../front/JS/myScript.js"></script>
+    <script tyle="text/javascript" src="../../front/JS/jquery-3.6.4.min.js"></script>
     <script>
         // Kích vào slide-show để đổi ảnh
         var index = 0;
         function changeImage() {
-            var imgs = ["TGDD_Picture/1.jpg", "TGDD_Picture/2.jpg", "TGDD_Picture/3.jpg", "TGDD_Picture/4.jpg", "TGDD_Picture/5.jpg"];
+            var imgs = ["../../front/TGDD_Picture/1.jpg", "../../front/TGDD_Picture/2.jpg", "../../front/TGDD_Picture/3.jpg", "../../front/TGDD_Picture/4.jpg", "../../front/TGDD_Picture/5.jpg"];
             document.getElementById("img").src = imgs[index];
             index++;
             if (index == 5) {
@@ -91,15 +91,19 @@
             </div>
 
             <div id="banner">
-                <a href="Index.html"><img id="logo" src="TGDD_Picture/logo.jpg" /></a>
-                <input type="text" placeholder="Tìm kiếm..." />
-                <button type="submit">Search</button>
-                <a id="cartAmount" href="Cart.html">Giỏ hàng (0)</a>
+                <a href="/"><img id="logo" src="front/TGDD_Picture/logo.jpg" /></a>
+                <form id="timkiem" action="{{ url('shop/timkiemsanpham') }}" method="GET">
+                    <div id="timkiem1">
+                        <input name="search" type="text" placeholder="Tìm kiếm..." />
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
+                <a id="cartAmount" href="/cart">Giỏ Hàng ({{ Cart::count() }})</a>
             </div>
 
             <div id="menu">
                 <ul>
-                    <li><a href="Index.html">Trang chủ</a></li>
+                    <li><a href="/">Trang chủ</a></li>
                     <li><a href="#">Giới thiệu</a>
                         <ul class="sub-menu">
                             <li><a href="#">Hệ thống cửa hàng</a></li>
@@ -109,14 +113,11 @@
                     </li>
                     <li><a href="#">Sản phẩm</a>
                         <ul class="sub-menu">
-                            <li><a href="Product.html">Iphone</a></li>
-                            <li><a href="Product.html">SamSung</a></li>
-                            <li><a href="Product.html">Google</a></li>
-                            <li><a href="Product.html">VIVO</a></li>
-                            <li><a href="Product.html">OPPO</a></li>
-                            <li><a href="Product.html">Realmi</a></li>
-                            <li><a href="Product.html">Lenovo</a></li>
-                            <li><a href="Product.html">Xiaomi</a></li>
+
+                            @foreach($menu as $theloaisanpham)
+                            <li><a href="/shop/danhmucsanpham/{{$theloaisanpham->MaDanhMuc}}">{{$theloaisanpham->TenDanhMuc}}</a></li>
+                          
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="#">Tin tức</a>
@@ -146,214 +147,92 @@
             </div>
         </div>
         <div id="main">
-            <div class="slide-show">
-                <img id="img" onclick="changeImage()" src="TGDD_Picture/1.jpg" alt="Quảng cáo" />
-            </div>
             <br />
             <div id="content">
-                <div class="cate">
-                    <h1>MUA THEO THƯƠNG HIỆU</h1>
-                </div>
-                <div id="featured-brands">
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/iphone.jpg"></a>
-                    </div>
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/Samsung.jpg"></a>
-                    </div>
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/pixel.jpg"></a>
-                    </div>
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/realme.jpg"></a>
-                    </div>
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/oppo.jpg"></a>
-                    </div>
-                    <div class="brands">
-                        <a href="#"><img src="TGDD_Picture/vivo.jpg"></a>
-                    </div>
-                </div>
                 <div class="cate">
                     <h1>ĐIỆN THOẠI NỔI BẬT</h1>
                 </div>
                 <div class="list-product">
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
+                    {{-- <div class="item col-3 col-s-6">
+                        <a href="product_details.html"><img class="item-photo" src="../../front/TGDD_Picture/product-1.webp"
                                 alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
+                        <a class=" product-name" href="{{ url('shop/sanpham/' . $sanpham->MaSP) }}">{{$sanpham->TenSP}}</a>
+                        <span class="new-price">25.990.000(VNĐ)</span>
+                        <span class="old-price">27.900.000(VNĐ)</span>
+                        <input class="btn-addToCart" type="button" value="Mua ngay" />
+                    </div> --}}
+                    @foreach($sanpham as $pro)
+                    <div class="item col-3 col-s-6">
+                        <a href="product_details.html"><img class="item-photo" src="../../front/TGDD_Picture/product-1.webp"
+                                alt="SP" /></a>
+                        <a class=" product-name" href="{{ url('shop/sanpham/' . $pro->MaSP) }}">{{$pro->TenSP}}</a>
+                        <span class="new-price">{{$pro->giatien}}$</span>
+                        <span class="old-price"> <?php
+                            // Assuming $dienthoai->giatien holds the new-price value
+                            
+                            $newPrice = $pro->giatien;
+                           
+                            $oldPrice = $newPrice * 1.2;
+                            echo "<span class=\"old-price\">$oldPrice$</span>";
+                            ?></span>
                         <input class="btn-addToCart" type="button" value="Mua ngay" />
                     </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25990000(VNĐ)</span>
-                        <span class="old-price">27900000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
+                    @endforeach
 
                 </div>
+                {{-- <div class="pagination-justify-content-center">
+                    <ul class="pagination">
+                      @if ($sanpham->currentpage() > 1)
+                      <li><a class="page" style="text-decoration: none; color:black" href="{{ $gettheloaisanpham->previouspageurl() }}" rel="prev">
+              
+                          < </a>
+                      </li>
+                      @endif
+              
+                      @for ($i = 1; $i <= $sanpham->lastpage(); $i++)
+                      <li class="{{ ($sanpham->currentpage() == $i) ? ' active' : '' }}">
+
+                          <a class="page" style="text-decoration: none; color:black" href="{{ $sanpham->url($i) }}">{{ $i }}</a>
+                        </li>
+                        @endfor
+              
+                        @if ($sanpham->hasmorepages())
+                        <li><a class="page" style="text-decoration: none; color:black;" href="{{ $sanpham->nextpageurl() }}" rel="next">
+                            >
+                          </a>
+                        </li>
+                        @endif
+                    </ul>
+                  </div>
+            </div> --}}
                 <div class="ad">
-                    <img src="TGDD_Picture/banner02.jpg" alt="Quảng cáo 1" />
+                    <img src="../../front/TGDD_Picture/banner02.jpg" alt="Quảng cáo 1" />
                 </div>
-                <!------------------------------------------------------------------->
-                <div class="cate">
-                    <h1>ĐIỆN THOẠI MỚI</h1>
-                </div>
-                <div class="list-product">
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-                    <div class="item col-3 col-s-6">
-                        <a href="product_details.html"><img class="item-photo" src="TGDD_Picture/product-1.webp"
-                                alt="SP" /></a>
-                        <a class=" product-name" href="product_details.html">Iphone 1</a>
-                        <span class="new-price">25.990.000(VNĐ)</span>
-                        <span class="old-price">27.900.000(VNĐ)</span>
-                        <input class="btn-addToCart" type="button" value="Mua ngay" />
-                    </div>
-
-                </div>
-                <div class="ad">
-                    <img src="TGDD_Picture/banner01.jpg" alt="Quảng cáo 1" />
-                </div>
-
-                <div id="lienhe">
-                    <a href="#" target="_self">
-                        <img src="TGDD_Picture/lh1.png" style="width:70px; height:70px" />
-                        <img src="TGDD_Picture/lh2.png" style="width:70px; height:70px" />
-                        <img src="TGDD_Picture/lh3.png" style="width:70px; height:70px" />
-                </div>
-            </div>
-        </div>
+     
         <!-- -------------------------------------------------------------------------- -->
         <div id="footer">
             <div id="home-policy">
                 <div class="f-item">
                     <div class="policy-item">
-                        <img src="TGDD_Picture/icon_1.png" alt="Icon">
+                        <img src="../../front/TGDD_Picture/icon_1.png" alt="Icon">
                         <span>THƯƠNG HIỆU QUỐC TẾ</span>
                     </div>
                 </div>
                 <div class="f-item">
                     <div class="policy-item">
-                        <img src="TGDD_Picture/icon_2.png" alt="Icon">
+                        <img src="../../front/TGDD_Picture/icon_2.png" alt="Icon">
                         <span>GIÁ CẢ CẠNH TRANH</span>
                     </div>
                 </div>
                 <div class="f-item">
                     <div class="policy-item">
-                        <img src="TGDD_Picture/icon_3.png" alt="Icon">
+                        <img src="../../front/TGDD_Picture/icon_3.png" alt="Icon">
                         <span>DỊCH VỤ CHU ĐÁO</span>
                     </div>
                 </div>
                 <div class="f-item">
                     <div class="policy-item">
-                        <img src="TGDD_Picture/icon_4.png" alt="Icon">
+                        <img src="../../front/TGDD_Picture/icon_4.png" alt="Icon">
                         <span>GIÁ CẢ HỢP LÝ</span>
                     </div>
                 </div>
@@ -399,7 +278,7 @@
             <div id="confirm-wrapper">
                 <span>Công ty cổ phần kinh doanh BQH_MobileShop Số ĐKKD 123456 do Sở KHĐT Hải Dương cấp ngày
                     10/03/2024</span>
-                <img src="TGDD_Picture/bocongthuong.png">
+                <img src="../../front/TGDD_Picture/bocongthuong.png">
             </div>
         </div>
     </div>

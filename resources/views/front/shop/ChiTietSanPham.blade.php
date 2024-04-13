@@ -91,9 +91,13 @@
             </div>
 
             <div id="banner">
-                <a href="/"><img id="logo" src="../../front/TGDD_Picture/logo.jpg" /></a>
-                <input type="text" placeholder="Tìm kiếm..." />
-                <button type="submit">Search</button>
+                <a href="/"><img id="logo" src="front/TGDD_Picture/logo.jpg" /></a>
+                <form id="timkiem" action="{{ url('shop/timkiemsanpham') }}" method="GET">
+                    <div id="timkiem1">
+                        <input name="search" type="text" placeholder="Tìm kiếm..." />
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
                 <a id="cartAmount" href="/cart">Giỏ Hàng ({{ Cart::count() }})</a>
             </div>
 
