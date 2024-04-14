@@ -65,7 +65,7 @@
                     <ul class="header-megamenu nav">
                         <li class="nav-item">
                             <a href="javascript:void(0);" data-placement="bottom" rel="popover-focus" data-offset="300" data-toggle="popover-custom" class="nav-link">
-                                <i class="nav-link-icon pe-7s-gift"> </i> Mega Menu
+                                <i class="nav-link-icon pe-7s-gift"> </i> Quản lý
                                 <i class="fa fa-angle-down ml-2 opacity-5"></i>
                             </a>
                             <div class="rm-max-width">
@@ -153,7 +153,7 @@
                         </li>
                         <li class="btn-group nav-item">
                             <a class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">4</span> Settings
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">1</span> Cài đặt
                                 <i class="fa fa-angle-down ml-2 opacity-5"></i>
                             </a>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu">
@@ -1237,29 +1237,29 @@
                                 <ul>
                                     <li>
                                         <a href="./admin/user" class="mm-active">
-                                            <i class="metismenu-icon"></i>User
+                                            <i class="metismenu-icon"></i>Người dùng
                                         </a>
                                     </li>
                                     <li>
                                         <a href="./admin/order">
-                                            <i class="metismenu-icon"></i>Order
+                                            <i class="metismenu-icon"></i>Đơn hàng
                                         </a>
                                     </li>
                                     <li>
                                         <a href="./admin/product">
-                                            <i class="metismenu-icon"></i>Product
+                                            <i class="metismenu-icon"></i>Sản phẩm
                                         </a>
                                     </li>
                                     <li>
                                         <a href="./admin/category">
-                                            <i class="metismenu-icon"></i>Category
+                                            <i class="metismenu-icon"></i>Danh mục sản phẩm
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="./admin/brand">
                                             <i class="metismenu-icon"></i>Brand
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
                         </ul>

@@ -12,9 +12,9 @@
                     <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                    Product
+                    Sản phẩm
                     <div class="page-title-subheading">
-                        View, create, update, delete and manage.
+                        Hiển thị, thêm, Sửa, xóa.
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <div class="position-relative row form-group">
                             <label for="name" class="col-md-3 text-md-right col-form-label">Tên Sản Phẩm</label>
                             <div class="col-md-9 col-xl-8">
-                                <input required name="TenSan" id="name" placeholder="Tên sách" type="text" class="form-control" value="">
+                                <input required name="TenSanPham" id="name" placeholder="Tên sản phẩm" type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="position-relative row form-group">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="position-relative row form-group">
-                            <label for="price" class="col-md-3 text-md-right col-form-label">Giá sách</label>
+                            <label for="price" class="col-md-3 text-md-right col-form-label">Giá sản phẩm</label>
                             <div class="col-md-9 col-xl-8">
                                 <input required name="GiaSach" id="price" placeholder="Price" type="text" class="form-control" value="">
                             </div>

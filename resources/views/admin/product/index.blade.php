@@ -10,9 +10,9 @@
                     <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                 </div>
                 <div>
-                    Product
+                    Sản phẩm
                     <div class="page-title-subheading">
-                        View, create, update, delete and manage.
+                        Hiển thị, thêm, Sửa, xóa.
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <span class="btn-icon-wrapper pr-2 opacity-7">
                         <i class="fa fa-plus fa-w-20"></i>
                     </span>
-                    Create
+                    Thêm SP
                 </a>
             </div>
         </div>

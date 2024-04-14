@@ -91,7 +91,7 @@
             </div>
 
             <div id="banner">
-                <a href="/"><img id="logo" src="front/TGDD_Picture/logo.jpg" /></a>
+                <a href="/"><img id="logo" src="../../front/TGDD_Picture/logo.jpg" /></a>
                 <form id="timkiem" action="{{ url('shop/timkiemsanpham') }}" method="GET">
                     <div id="timkiem1">
                         <input name="search" type="text" placeholder="Tìm kiếm..." />
@@ -166,9 +166,9 @@
                     
                     <br>
                     <span
-                        style="color: red; font-size: xx-large; font-weight: bold; float: left"> {{$sanpham->giatien}} VNĐ</span></span>
+                        style="color: red; font-size: 30px; font-weight: bold; float: left;margin-left: 10px">Giá: {{$sanpham->giatien}} $</span></span>
                     <img src="../../front/TGDD_Picture/left_bottom.webp"
-                        style="width: 400px; height: 50px; float: left; margin-top: 50px" />
+                        style="width: 400px; height: 50px; float: left; margin-top: 50px;margin-left: 10px" />
                     <div id="option" style="padding-top: 150px;">
                         <div id="cl-option">
                             <h2 style="color: rgb(10, 106, 185)">Số Lượng</h2>
